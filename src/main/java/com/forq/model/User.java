@@ -8,9 +8,8 @@ import java.util.List;
 
 @Data
 public class User {
-    int userId;
+    int id;
     String username;
     String password;
-    Date userCreationDate;
-    List<Post> posts = new ArrayList<>();
+    Date creationDate;
 }

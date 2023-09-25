@@ -6,10 +6,11 @@ import java.sql.Date;
 
 @Data
 public class Post {
-    int postId;
-    String postTitle;
-    String postDescription;
+    int id;
+    String title;
+    String description;
     Date createdDate;
-    int postUpvotes;
-    int postDownvotes;
+    int upvotes;
+    int downvotes;
+    User user;
 }

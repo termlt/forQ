@@ -12,12 +12,41 @@
 
     <servlet-mapping>
         <servlet-name>IndexServlet</servlet-name>
-        <url-pattern/>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProfileServlet</servlet-name>
+        <jsp-file>/profile.jsp</jsp-file>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ProfileServlet</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PostServlet</servlet-name>
+        <servlet-class>com.forq.servlet.GetPostServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>PostServlet</servlet-name>
+        <url-pattern>/post</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddCommentServlet</servlet-name>
+        <servlet-class>com.forq.servlet.AddCommentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddCommentServlet</servlet-name>
+        <url-pattern>/add-comment</url-pattern>
     </servlet-mapping>
 
 
 
-    <error-page>w
+    <error-page>
         <error-code>404</error-code>
         <location>/errors/404error.jsp</location>
     </error-page>
