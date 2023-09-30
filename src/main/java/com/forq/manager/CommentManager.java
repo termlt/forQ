@@ -40,6 +40,7 @@ public class CommentManager {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Comment comment = new Comment();
+                comment.setId(resultSet.getInt("comment_id"));
                 comment.setText(resultSet.getString("text"));
                 int userId = resultSet.getInt("user_id");
                 User user = userManager.getUserById(userId);
@@ -73,5 +74,34 @@ public class CommentManager {
         }
 
         return comments;
+    }
+
+
+    public void deleteComment(int commentId) {
+        String query = "DELETE * FROM comment WHERE comment_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, commentId);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void changeCommentText(String text, int commentId) {
+        String query = "UPDATE comment SET text = ? WHERE comment_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, text);
+            preparedStatement.setInt(2, commentId);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

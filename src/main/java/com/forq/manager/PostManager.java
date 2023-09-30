@@ -104,4 +104,32 @@ public class PostManager {
 
         return null;
     }
+
+
+    public void changePostTitle(String newTitle, int postId) {
+        String query = "UPDATE post SET post_title = ? WHERE post_id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, newTitle);
+            preparedStatement.setInt(2, postId);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void changePostDescription(String newDescription, int postId) {
+        String query = "UPDATE post SET post_description = ? WHERE post_id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, newDescription);
+            preparedStatement.setInt(2, postId);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

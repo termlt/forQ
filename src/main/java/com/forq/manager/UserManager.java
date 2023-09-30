@@ -110,12 +110,30 @@ public class UserManager {
         return null;
     }
 
-    public void changePassword(String newPassword, int userId) {
+    public void changePassword(String password, int userId) {
         String query = "UPDATE user SET password = ? WHERE user_id = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, password);
+            preparedStatement.setInt(2, userId);
+
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
+
+    public void changeUsername(String username, int userId) {
+        String query = "UPDATE user SET username = ? WHERE user_id = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            preparedStatement.setInt(2, userId);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

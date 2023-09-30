@@ -2,7 +2,6 @@
 <%@ page import="com.forq.model.Post" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.forq.model.User" %>
-<%@ page import="com.forq.manager.UserManager" %>
 <%@ page import="com.forq.manager.CommentManager" %>
 <%@ page import="com.forq.model.Comment" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -23,7 +22,7 @@
 <div class="post-container">
     <%
         PostManager postManager = new PostManager();
-        User user = (User) session.getAttribute("user");
+        User user = (User) request.getAttribute("user");
         List<Post> posts = postManager.getAllPostsByUser(user.getId());
 
         for (Post post : posts) {
@@ -44,7 +43,6 @@
     <h2>Comments</h2>
 
     <%
-        UserManager userManager = new UserManager();
         CommentManager commentManager = new CommentManager();
         List<Comment> comments = commentManager.getAllCommentsByUser(user.getId());
 

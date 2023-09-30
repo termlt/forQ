@@ -35,8 +35,5 @@ public class AddCommentServlet extends HttpServlet {
         commentManager.addComment(comment);
 
         resp.sendRedirect("/post?postId=" + Integer.parseInt(req.getParameter("postId")));
-
-        //  http:..../post/id
-        // /post/1
     }
 }

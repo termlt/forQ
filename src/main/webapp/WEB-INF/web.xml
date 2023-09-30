@@ -17,7 +17,7 @@
 
     <servlet>
         <servlet-name>ProfileServlet</servlet-name>
-        <jsp-file>/profile.jsp</jsp-file>
+        <servlet-class>com.forq.servlet.ProfileServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -44,6 +44,32 @@
         <url-pattern>/add-comment</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>DeleteCommentServlet</servlet-name>
+        <servlet-class>com.forq.servlet.DeleteCommentServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteCommentServlet</servlet-name>
+        <url-pattern>/delete-comment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>com.forq.servlet.ChangePasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/change-password</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChangeUsernameServlet</servlet-name>
+        <servlet-class>com.forq.servlet.ChangeUsernameServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeUsernameServlet</servlet-name>
+        <url-pattern>/change-username</url-pattern>
+    </servlet-mapping>
 
 
     <error-page>

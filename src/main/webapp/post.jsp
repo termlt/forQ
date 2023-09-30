@@ -43,7 +43,7 @@
 
     <div class="comment">
         <p class="comment-text"><%=comment.getText()%></p>
-        <p class="comment-author"><%=userManager.getUsernameById(comment.getUser().getId())%></p>
+        <p class="comment-author" onclick="location.href='${pageContext.request.contextPath}/profile?userId=<%=userManager.getUsernameById(comment.getUser().getId())%>';"><%=userManager.getUsernameById(comment.getUser().getId())%></p>
     </div>
 
     <% } %>
