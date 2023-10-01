@@ -4,6 +4,7 @@
 <%@ page import="com.forq.model.User" %>
 <%@ page import="com.forq.manager.CommentManager" %>
 <%@ page import="com.forq.model.Comment" %>
+<%@ page import="com.forq.manager.UserManager" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <link rel="stylesheet" type="text/css" href="css/profile.css">
 <!DOCTYPE html>
@@ -43,8 +44,10 @@
     <h2>Comments</h2>
 
     <%
+        UserManager userManager = new UserManager();
         CommentManager commentManager = new CommentManager();
         List<Comment> comments = commentManager.getAllCommentsByUser(user.getId());
+        User loggedInUser = (User) session.getAttribute("user");
 
         for (Comment comment : comments) {
 
@@ -52,9 +55,21 @@
 
     <div class="comment">
         <p class="comment-text"><%=comment.getText()%></p>
+
+        <% if (session.getAttribute("loggedIn") != null) {
+            if (loggedInUser.getId() == userManager.getUserById(user.getId()).getId()) {
+        %>
+
+        <form action="${pageContext.request.contextPath}/delete-comment" method="get">
+            <input type="hidden" name="commentId" value="<%=comment.getId()%>">
+            <button type="submit" class="delete-button">Delete</button>
+        </form>
+        <% } %>
+        <% } %>
     </div>
 
     <% } %>
+
 </div>
 
 

@@ -66,6 +66,7 @@ public class CommentManager {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Comment comment = new Comment();
+                comment.setId(resultSet.getInt("comment_id"));
                 comment.setText(resultSet.getString("text"));
                 comments.add(comment);
             }
@@ -78,7 +79,7 @@ public class CommentManager {
 
 
     public void deleteComment(int commentId) {
-        String query = "DELETE * FROM comment WHERE comment_id = ?";
+        String query = "DELETE FROM comment WHERE comment_id = ?";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);

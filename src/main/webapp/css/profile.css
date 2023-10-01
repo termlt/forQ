@@ -117,3 +117,17 @@ body {
     font-size: 14px;
     color: #777;
 }
+
+.delete-button {
+    background-color: #ff0000;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.delete-button:hover {
+    background-color: #ff3333;
+}
